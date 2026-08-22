@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - dayflow-data:/app/data
+    environment:
+      PORT: 5000
+      JWT_SECRET: ${JWT_SECRET:-change-this-to-a-long-random-string}
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      GROQ_MODEL: ${GROQ_MODEL:-llama-3.3-70b-versatile}
+      CLIENT_ORIGIN: ${CLIENT_ORIGIN:-http://localhost:4173}
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:5000/api}
+    ports:
+      - "4173:4173"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  dayflow-data:

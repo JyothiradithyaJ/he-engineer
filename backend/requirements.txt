@@ -1,0 +1,32 @@
+# Dayflow HRMS — backend dependency manifest
+#
+# Node.js does not read requirements.txt the way pip does — this file is a
+# pinned, human-readable manifest of exactly what this backend needs and why.
+# It mirrors what's in package.json so you always know the intended versions
+# at a glance. To actually install, use npm as described in SETUP.md.
+#
+# Format: <package>==<exact version>   # what it's for
+#
+# --- Core server ---
+express==4.19.2        # HTTP server / routing
+cors==2.8.5             # Cross-origin requests from the frontend
+dotenv==16.4.5          # Loads .env config (PORT, JWT_SECRET, GROQ_API_KEY, ...)
+
+# --- Auth ---
+bcryptjs==2.4.3          # Password hashing (pure JS, no native build step)
+jsonwebtoken==9.0.2       # Session tokens
+
+# --- IDs ---
+uuid==9.0.1               # Generates row IDs
+
+# --- AI chatbot (the ONLY external API this app calls) ---
+groq-sdk==0.7.0           # Groq's chat completions API — powers the HR assistant
+
+# --- Database ---
+# No package listed here on purpose: the database layer now uses Node's
+# built-in `node:sqlite` module (DatabaseSync), shipped with Node.js itself
+# since v22.5. It requires ZERO npm install and ZERO native compilation —
+# this is what eliminates the Visual Studio / node-gyp build error you hit
+# with the previous "better-sqlite3" native module.
+#
+# Requirement: Node.js >= 22.5.0 (this project was tested against v22 and v24).

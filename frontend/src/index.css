@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  @apply bg-mist text-slate font-body antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9DB6B8 transparent;
+}
+
+:focus-visible {
+  outline: 2px solid #0E7C86;
+  outline-offset: 2px;
+}
+
+.card {
+  @apply bg-paper rounded-2xl shadow-card border border-slate-faint/20;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-amber text-ink font-semibold px-6 py-3 hover:bg-amber-deep transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-faint/40 text-slate font-semibold px-6 py-3 hover:border-teal hover:text-teal transition-colors;
+}
+
+.btn-dark {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink text-mist font-semibold px-6 py-3 hover:bg-ink-3 transition-colors;
+}
+
+.input-field {
+  @apply w-full rounded-xl border border-slate-faint/40 bg-mist/60 px-4 py-3 text-sm text-ink placeholder:text-slate-muted focus:border-teal focus:bg-white outline-none transition-colors;
+}
+
+.label {
+  @apply text-xs font-semibold uppercase tracking-wide text-slate-muted mb-1.5 block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
