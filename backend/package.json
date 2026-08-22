@@ -4,6 +4,9 @@
   "description": "Dayflow HRMS - backend API (auth, employees, attendance, leave, payroll, analytics, Groq chatbot)",
   "main": "server.js",
   "type": "commonjs",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
