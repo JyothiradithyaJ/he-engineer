@@ -1,4 +1,4 @@
-FROM node:22.5.0-slim
+FROM node:22.13.0-slim
 WORKDIR /app
 COPY package.json ./
 RUN npm install --omit=dev
