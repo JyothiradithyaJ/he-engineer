@@ -34,13 +34,13 @@ function SplashLoader() {
 }
 
 export default function App() {
-  const { user, loading } = useAuth();
+  const { loading } = useAuth();
 
   return (
     <Routes>
-      <Route path="/" element={loading ? <SplashLoader /> : user ? <Navigate to="/app" replace /> : <Landing />} />
-      <Route path="/login" element={user ? <Navigate to="/app" replace /> : <Login />} />
-      <Route path="/register" element={user ? <Navigate to="/app" replace /> : <Register />} />
+      <Route path="/" element={loading ? <SplashLoader /> : <Landing />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       <Route path="/app" element={<Protected><Shell /></Protected>}>
         <Route index element={<DashboardRouter />} />
